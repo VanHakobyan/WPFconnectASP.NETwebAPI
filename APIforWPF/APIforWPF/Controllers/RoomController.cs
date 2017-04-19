@@ -6,12 +6,14 @@ using System.Net.Http;
 using System.Web.Http;
 using APIforWPF.Models;
 using System.IO;
+using System.Web;
+using System.Web.Mvc;
 
 namespace APIforWPF.Controllers
 {
     public class RoomController : ApiController
     {
-       
+
         //List<People> peoples = new List<People>
         //{
         //    new People { Name="Gayane",Age=125,Heigth=12},
@@ -53,9 +55,15 @@ namespace APIforWPF.Controllers
         }
 
         // POST: api/Room
-        public void Post([FromBody]string value)
+        public void Post(string value)
         {
-           //TODO File.Create(pathCustom+@"\" +value);
+            if (Path.GetFileName(value) != value)
+            {
+                throw new Exception("'fileName' is invalid!");
+            }
+            string combined = Path.Combine(pathCustom, value);
+            File.Create(combined);
+
         }
 
         // PUT: api/Room/5

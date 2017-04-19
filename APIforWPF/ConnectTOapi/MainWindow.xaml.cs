@@ -37,7 +37,7 @@ namespace ConnectTOapi
         {
             HttpClient client = new HttpClient();
 
-            client.GetAsync(@"http://localhost:43416/api/directory")
+            client.GetAsync(@"http://localhost:43416/api/room")
                 .ContinueWith(response =>
                 {
                     if (response.Exception != null)
@@ -54,7 +54,8 @@ namespace ConnectTOapi
                         ObservableCollection<string> files = jss.Deserialize<ObservableCollection<string>>(responseText);
 
                         Dispatcher.BeginInvoke(DispatcherPriority.Normal,
-                            (Action)(() => {
+                            (Action)(() =>
+                            {
                                 listOfFiles.DataContext = files;
 
                                 Binding binding = new Binding();
@@ -71,7 +72,7 @@ namespace ConnectTOapi
         {
             HttpClient client = new HttpClient();
 
-            string url = string.Format("http://localhost:43416/api/directory?name={0}", Uri.EscapeDataString(textBoxFileName.Text));
+            string url = string.Format("http://localhost:43416/api/room?name={0}", Uri.EscapeDataString(textBoxFileName.Text));
 
 
             client.GetAsync(url)
@@ -101,9 +102,19 @@ namespace ConnectTOapi
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             HttpClient client = new HttpClient();
-            string url = string.Format("http://localhost:43416/api/directory?name={0}", Uri.EscapeDataString(textBoxFileName.Text));
+            string url = string.Format("http://localhost:43416/api/room?name={0}", Uri.EscapeDataString(textBoxFileName.Text));
 
             client.DeleteAsync(url);
+        }
+
+        private void Createnew_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO:
+            //HttpClient client = new HttpClient();
+            //string url = string.Format("http://localhost:43416/api/room?name={0}", Uri.EscapeDataString(textBoxFileName.Text));
+            //HttpContent content = new StringContent("???");
+            //client.PostAsync(url,content);
+
         }
     }
 }

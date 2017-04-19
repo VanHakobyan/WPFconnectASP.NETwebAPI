@@ -60,6 +60,7 @@ namespace APIforWPF.Controllers
         // PUT: api/Room/5
         public void Put(int id, [FromBody]string value)
         {
+
         }
 
         // DELETE: api/Room/5

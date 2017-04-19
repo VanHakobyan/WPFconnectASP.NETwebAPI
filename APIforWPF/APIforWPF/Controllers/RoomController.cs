@@ -67,9 +67,19 @@ namespace APIforWPF.Controllers
         }
 
         // PUT: api/Room/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(string name,int id)
         {
+            //TODO:
 
+            //if (Path.GetFileName(name) != name)
+            //{
+            //    Path.ChangeExtension(Path.GetFileName(name), name);
+            //}
+            //else
+            //{
+            //    throw new Exception("'fileName' is invalid!");
+            //}
+           
         }
 
         // DELETE: api/Room/5

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace connectLocal
+namespace ConnectTOapi
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,7 +25,7 @@ namespace connectLocal
             InitializeComponent();
         }
 
-        private void GetAllFiles_Click(object sender, RoutedEventArgs e)
+        private void listOfFiles_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

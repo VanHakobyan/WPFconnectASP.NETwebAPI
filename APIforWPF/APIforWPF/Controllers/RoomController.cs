@@ -54,7 +54,7 @@ namespace APIforWPF.Controllers
         // POST: api/Room
         public void Post([FromBody]string value)
         {
-            File.Create(pathCustom+"\"+value"+".txt");
+           //TODO File.Create(pathCustom+@"\" +value);
         }
 
         // PUT: api/Room/5
@@ -63,8 +63,20 @@ namespace APIforWPF.Controllers
         }
 
         // DELETE: api/Room/5
-        public void Delete(int id)
+        public void Delete(string name)
         {
+            string fileName = Path.Combine(pathCustom, name);
+
+            string[] Files = Directory.GetFiles(pathCustom);
+
+            foreach (string file in Files)
+            {
+                if (file.ToUpper().Contains(fileName.ToUpper()))
+                {
+                    File.Delete(file);
+                    Console.WriteLine("Sucsesful");
+                }
+            }
         }
     }
 }

@@ -4,26 +4,57 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using APIforWPF.Models;
+using System.IO;
 
 namespace APIforWPF.Controllers
 {
     public class RoomController : ApiController
     {
         // GET: api/Room
-        public IEnumerable<string> Get()
+        //List<People> peoples = new List<People>
+        //{
+        //    new People { Name="Gayane",Age=125,Heigth=12},
+        //new People{Name="Lusine",Age=215,Heigth=13}
+        //};
+        readonly string pathCustom = @"C:\TestDirectory";
+        public IEnumerable<string> GetAllFiles()
         {
-            return new string[] { "value1", "value2" };
+            DirectoryInfo directory = new DirectoryInfo(pathCustom);
+            var files = directory.GetFiles().Where(f => !f.Attributes.HasFlag(FileAttributes.Hidden)).Select(f => f.Name).ToArray();
+            return files;
         }
 
+
+        //Bad prictice
+
+        //public HttpResponseMessage Get(string name)
+        //{
+        //    string path = Path.Combine(pathCustom, name);
+        //    StreamReader sr = File.OpenText(path);
+        //    string textline = sr.ReadLine();
+        //    sr.Close();
+        //    return textline;
+        //    HttpResponseMessage res = new HttpResponseMessage();
+        //    res.Content = new StringContent(textline);
+        //    return res;
+
+        //}
+
         // GET: api/Room/5
-        public string Get(int id)
+        public string Get(string name)
         {
-            return "value";
+            string path = Path.Combine(@"D:\TestDirectory", name);
+            StreamReader sr = File.OpenText(path);
+            string textline = sr.ReadLine();
+            sr.Close();
+            return textline;
         }
 
         // POST: api/Room
         public void Post([FromBody]string value)
         {
+            File.Create(pathCustom+"\"+value"+".txt");
         }
 
         // PUT: api/Room/5

@@ -20,7 +20,7 @@
             <RowDefinition Height="170*" />
         </Grid.RowDefinitions>
 
-        <Button Content="Browse File&#10;From Directory" Name="GetAllFiles"  Padding="3" VerticalAlignment="Center" Margin="5" FontWeight="Medium" FontSize="14" Background="#FF6DB7EC" />
+        <Button Content="Browse File&#10;From Directory" Name="GetAllFiles"  Padding="3" VerticalAlignment="Center" Margin="5" FontWeight="Medium" FontSize="14" Background="#FF6DB7EC" Click="GetAllFiles_Click" />
 
 
         <ListBox Name="listOfFiles"   Margin="3"  Grid.Column="1" Grid.Row="0"      
@@ -33,7 +33,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Margin="3">
             <TextBox Name="textBoxFileName" Width="200" Height="25" VerticalAlignment="Center"  ></TextBox>
-            <Button Content="Open File Content " Name="buttonGetByName" VerticalAlignment="Center" Padding="2" Margin="15, 0, 0, 0" Background="#FF4995B2"></Button>
+            <Button Content="Open File Content " Name="buttonGetByName" VerticalAlignment="Center" Padding="2" Margin="15, 0, 0, 0" Background="#FF4995B2" Click="buttonGetByName_Click"></Button>
         </StackPanel>
 
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="#FF171406"> File Name</TextBlock>
@@ -42,7 +42,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Margin="3">
             <Button Content="Update File Content" Name="UpdateFile" Padding="2" VerticalAlignment="Center" Margin="0, 0, 0, 0" Background="#FFDDFCEF"></Button>
-            <Button Content="Delete File" Name="Delete" Padding="2" VerticalAlignment="Center" Margin="10, 0, 0, 0" Background="#FFDDFCEF"></Button>
+            <Button Content="Delete File" Name="Delete" Padding="2" VerticalAlignment="Center" Margin="10, 0, 0, 0" Background="#FFDDFCEF" Click="Delete_Click"></Button>
             <Button Content="Create New File" Name="Createnew" Padding="2" VerticalAlignment="Center" Margin="10, 0, 0, 0" Background="#FF475EA7"></Button>
 
         </StackPanel>

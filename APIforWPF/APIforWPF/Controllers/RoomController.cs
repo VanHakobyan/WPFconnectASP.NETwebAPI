@@ -11,13 +11,14 @@ namespace APIforWPF.Controllers
 {
     public class RoomController : ApiController
     {
-        // GET: api/Room
+       
         //List<People> peoples = new List<People>
         //{
         //    new People { Name="Gayane",Age=125,Heigth=12},
         //new People{Name="Lusine",Age=215,Heigth=13}
         //};
         readonly string pathCustom = @"C:\TestDirectory";
+        // GET: api/Room
         public IEnumerable<string> GetAllFiles()
         {
             DirectoryInfo directory = new DirectoryInfo(pathCustom);
@@ -44,7 +45,7 @@ namespace APIforWPF.Controllers
         // GET: api/Room/5
         public string Get(string name)
         {
-            string path = Path.Combine(@"D:\TestDirectory", name);
+            string path = Path.Combine(pathCustom, name);
             StreamReader sr = File.OpenText(path);
             string textline = sr.ReadLine();
             sr.Close();

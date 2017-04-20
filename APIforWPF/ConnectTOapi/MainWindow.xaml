@@ -5,7 +5,7 @@
         >
     <Grid Margin="3" >
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Van\Source\Repos\WPFconnectASP.NETwebAPI\APIforWPF\ConnectTOapi\1996.jfif"></ImageBrush>
+            <ImageBrush ImageSource="C:\Users\Labuser19\Source\Repos\WPFconnectASP.NETwebAPI2\APIforWPF\ConnectTOapi\1996.jfif"></ImageBrush>
         </Grid.Background>
 
         <Grid.ColumnDefinitions>
@@ -20,7 +20,7 @@
             <RowDefinition Height="170*" />
         </Grid.RowDefinitions>
 
-        <Button Content="Browse File&#10;From Directory" Name="GetAllFiles"  Padding="3" VerticalAlignment="Center" Margin="5" FontWeight="Medium" FontSize="14" Background="#FF6DB7EC" Click="GetAllFiles_Click" />
+        <Button Content="Browse " Name="GetAllFiles"  Padding="3" VerticalAlignment="Center" Margin="25,34" FontWeight="Medium" FontSize="14" Background="#FF6DB7EC" Click="GetAllFiles_Click" />
 
 
         <ListBox Name="listOfFiles"   Margin="3"  Grid.Column="1" Grid.Row="0"      

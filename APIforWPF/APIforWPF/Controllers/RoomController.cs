@@ -49,7 +49,7 @@ namespace APIforWPF.Controllers
         {
             string path = Path.Combine(pathCustom, name);
             StreamReader sr = File.OpenText(path);
-            string textline = sr.ReadLine();
+            string textline = sr.ReadToEnd();
             sr.Close();
             return textline;
         }
@@ -57,7 +57,7 @@ namespace APIforWPF.Controllers
         // POST: api/Room
         public void Post(string value)
         {
-            if (Path.GetFileName(value) != value)
+            if (Directory.GetFiles(pathCustom).Contains(value))
             {
                 throw new Exception("'fileName' is invalid!");
             }
@@ -71,15 +71,15 @@ namespace APIforWPF.Controllers
         {
             //TODO:
 
-            //if (Path.GetFileName(name) != name)
+            //if (Path.GetFileName(name) == name)
             //{
-            //    Path.ChangeExtension(Path.GetFileName(name), name);
+            //    Path.(Path.GetFileName(name), name);
             //}
             //else
             //{
             //    throw new Exception("'fileName' is invalid!");
             //}
-           
+
         }
 
         // DELETE: api/Room/5

@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Web.Script.Serialization;
+using System.Net.Http.Headers;
+
 namespace ConnectTOapi
 {
     /// <summary>
@@ -118,21 +120,51 @@ namespace ConnectTOapi
         //    return response.Headers.Location;
 
         //}
-        private async void Createnew_Click(object sender, RoutedEventArgs e)
+        private void Createnew_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                HttpClient client = new HttpClient();
-                var response = await client.PostAsJsonAsync("http://localhost:43416/api/room?name={0}", textBoxFileName.Text);
-                //response.EnsureSuccessStatusCode(); // Throw on error code.
-                MessageBox.Show("Student Added Successfully", "Result", MessageBoxButton.OK, MessageBoxImage.Information);
-                //listOfFiles.ItemsSource = await GetAllFiles();
-                listOfFiles.ScrollIntoView(listOfFiles.ItemContainerGenerator.Items[listOfFiles.Items.Count - 1]);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Student not Added, May be due to Duplicate ID");
-            }
+            //try
+            //{
+            //    HttpClient client = new HttpClient();
+            //    var response = await client.PostAsJsonAsync("http://localhost:43416/api/room?name={0}", textBoxFileName.Text);
+            //    //response.EnsureSuccessStatusCode(); // Throw on error code.
+            //    MessageBox.Show("Student Added Successfully", "Result", MessageBoxButton.OK, MessageBoxImage.Information);
+            //    //listOfFiles.ItemsSource = await GetAllFiles();
+            //    listOfFiles.ScrollIntoView(listOfFiles.ItemContainerGenerator.Items[listOfFiles.Items.Count - 1]);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Student not Added, May be due to Duplicate ID");
+            //}
+
+
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:43416/");
+
+            client.DefaultRequestHeaders.Accept.Add(
+               new MediaTypeWithQualityHeaderValue("application/json"));
+            //var employee = new Employee();
+
+            //employee.Id = int.Parse(txtId.Text);
+            //employee.Name = txtName.Text;
+            //employee.Address = txtAddress.Text;
+            //employee.Designation = txtDesignation.Text;
+
+            var response = client.PostAsJsonAsync("api/room", textBoxFileName.Text);
+
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    MessageBox.Show("Employee Added");
+            //    txtId.Text = "";
+            //    txtName.Text = "";
+            //    txtAddress.Text = "";
+            //    txtDesignation.Text = "";
+            //    BindEmployeeList();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase);
+            //}
+
         }
       
 

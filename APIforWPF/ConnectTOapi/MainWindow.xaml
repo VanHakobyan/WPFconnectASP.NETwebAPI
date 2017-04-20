@@ -25,7 +25,9 @@
 
         <ListBox Name="listOfFiles"   Margin="3"  Grid.Column="1" Grid.Row="0"      
                  Height="90" Width="370"
-                 SelectionChanged="listOfFiles_SelectionChanged" OpacityMask="Black"/>
+                 SelectionChanged="listOfFiles_SelectionChanged" OpacityMask="Black"
+                 
+                 />
 
 
 
@@ -43,7 +45,7 @@
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Margin="3">
             <Button Content="Update File Content" Name="UpdateFile" Padding="2" VerticalAlignment="Center" Margin="0, 0, 0, 0" Background="#FFDDFCEF"></Button>
             <Button Content="Delete File" Name="Delete" Padding="2" VerticalAlignment="Center" Margin="10, 0, 0, 0" Background="#FFDDFCEF" Click="Delete_Click"></Button>
-            <Button Content="Create New File" Name="Createnew" Padding="2" VerticalAlignment="Center" Margin="10, 0, 0, 0" Background="#FF475EA7"></Button>
+            <Button Content="Create New File" Name="Createnew" Padding="2" VerticalAlignment="Center" Margin="10, 0, 0, 0" Background="#FF475EA7" Click="Createnew_Click"></Button>
 
         </StackPanel>
 

@@ -107,14 +107,34 @@ namespace ConnectTOapi
             client.DeleteAsync(url);
         }
 
-        private void Createnew_Click(object sender, RoutedEventArgs e)
-        {
-            //TODO:
-            //HttpClient client = new HttpClient();
-            //string url = string.Format("http://localhost:43416/api/room?name={0}", Uri.EscapeDataString(textBoxFileName.Text));
-            //HttpContent content = new StringContent("???");
-            //client.PostAsync(url,content);
+        //async Task<Uri> Createnew_Click(object sender, RoutedEventArgs e)
+        //{
+        //    HttpClient client = new HttpClient();
+        //    string url = string.Format("http://localhost:43416/api/room?name={0}", Uri.EscapeDataString(textBoxFileName.Text));
 
+        //    HttpResponseMessage response = await client.PostAsJsonAsync("api/room",url);
+        //    response.EnsureSuccessStatusCode();
+
+        //    return response.Headers.Location;
+
+        //}
+        private async void Createnew_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                var response = await client.PostAsJsonAsync("http://localhost:43416/api/room?name={0}", textBoxFileName.Text);
+                //response.EnsureSuccessStatusCode(); // Throw on error code.
+                MessageBox.Show("Student Added Successfully", "Result", MessageBoxButton.OK, MessageBoxImage.Information);
+                //listOfFiles.ItemsSource = await GetAllFiles();
+                listOfFiles.ScrollIntoView(listOfFiles.ItemContainerGenerator.Items[listOfFiles.Items.Count - 1]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Student not Added, May be due to Duplicate ID");
+            }
         }
+      
+
     }
 }
